@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paramètres</title>
+{% include "_head_fonts.html" %}
+</head>
+<body>
+<div class="wrap">
+  {% include "_admin_nav.html" %}
+
+  <div class="card">
+    <h1>Paramètres</h1>
+    <form action="/gestion-privee/parametres" method="post">
+      <label for="prix_fcfa">Prix (FCFA)</label>
+      <input type="number" id="prix_fcfa" name="prix_fcfa" value="{{ settings.prix_fcfa | int }}" required>
+
+      <label for="nom_plateforme">Nom de la plateforme</label>
+      <input type="text" id="nom_plateforme" name="nom_plateforme" value="{{ settings.nom_plateforme }}" required>
+
+      <label for="message_bienvenue">Message d'accueil</label>
+      <textarea id="message_bienvenue" name="message_bienvenue" rows="3">{{ settings.message_bienvenue }}</textarea>
+
+      <label for="whatsapp_support">Votre numéro WhatsApp
+        <span class="hint">Utilisé pour vos liens de notification et de support.</span>
+      </label>
+      <input type="text" id="whatsapp_support" name="whatsapp_support" value="{{ settings.whatsapp_support }}" placeholder="237690000000">
+
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
