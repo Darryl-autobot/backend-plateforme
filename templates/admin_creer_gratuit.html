@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accès gratuit</title>
+{% include "_head_fonts.html" %}
+</head>
+<body>
+<div class="wrap">
+  {% include "_admin_nav.html" %}
+
+  <div class="card">
+    <span class="beacon"><span class="dot"></span> Privilège administrateur</span>
+    <h1>Offrir un accès</h1>
+    <p class="lede">Génère un accès complet sans paiement, pour vous-même ou pour n'importe qui. Répétable sans limite.</p>
+
+    <form action="/gestion-privee/creer-gratuit" method="post">
+      <label for="whatsapp_number">Numéro WhatsApp du bénéficiaire</label>
+      <input type="text" id="whatsapp_number" name="whatsapp_number" required placeholder="237690000000">
+      <button type="submit">Générer l'accès</button>
+    </form>
+
+    {% if lien_genere %}
+    <div class="field-row" style="margin-top:20px; flex-direction:column; align-items:stretch;">
+      <span class="beacon" style="margin-bottom:8px;"><span class="dot"></span> Accès créé</span>
+      <code class="val">{{ lien_genere }}</code>
+    </div>
+    {% endif %}
+  </div>
+</div>
+</body>
+</html>
