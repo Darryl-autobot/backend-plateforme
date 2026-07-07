@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ settings.nom_plateforme }}</title>
+{% include "_head_fonts.html" %}
+</head>
+<body>
+<div class="wrap">
+
+  <div class="card">
+    <span class="beacon"><span class="dot"></span> Diffusion automatique</span>
+    <h1>Votre canal Telegram publie tout seul, chaque jour.</h1>
+    <p class="lede">Confiez vos textes, photos et vidéos une fois. {{ settings.nom_plateforme }} les diffuse sur votre canal chaque jour, et répond à votre audience dans les commentaires — sans que vous y touchiez.</p>
+
+    <form action="/commander" method="post">
+      <label for="whatsapp_number">Votre numéro WhatsApp
+        <span class="hint">Avec l'indicatif pays, ex. 237690000000</span>
+      </label>
+      <input type="text" id="whatsapp_number" name="whatsapp_number" required placeholder="237690000000">
+      <button type="submit" class="btn-block">Activer ma diffusion — {{ settings.prix_fcfa | int }} FCFA</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2 class="eyebrow">Comment ça marche</h2>
+    <ol class="steps">
+      <li><strong>Vous payez {{ settings.prix_fcfa | int }} FCFA</strong> par Mobile Money ou carte bancaire, en toute sécurité.</li>
+      <li><strong>Vous renseignez votre canal</strong> — deux minutes, avec un guide à chaque champ.</li>
+      <li><strong>Votre bot est généré et livré</strong> — prêt à diffuser dès son activation.</li>
+    </ol>
+  </div>
+
+  <footer class="note">{{ settings.nom_plateforme }} — un bot, un paiement, une diffusion continue.</footer>
+</div>
+</body>
+</html>
