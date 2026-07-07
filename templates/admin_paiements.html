@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moyens de paiement</title>
+{% include "_head_fonts.html" %}
+</head>
+<body>
+<div class="wrap">
+  {% include "_admin_nav.html" %}
+
+  <div class="card">
+    <h1>Moyens de paiement</h1>
+    <table>
+      <tr><th></th><th>Nom</th><th>Statut</th><th></th></tr>
+      {% for m in moyens %}
+      <tr>
+        <td>{{ m.icone }}</td>
+        <td>{{ m.nom }}</td>
+        <td>{% if m.actif %}<span class="badge badge-livre">Actif</span>{% else %}<span class="badge badge-attente">Inactif</span>{% endif %}</td>
+        <td>
+          <form action="/gestion-privee/paiements/{{ m.id }}/toggle" method="post" style="margin:0;">
+            <button type="submit" class="btn-sm btn-ghost">{% if m.actif %}Désactiver{% else %}Activer{% endif %}</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div class="card">
+    <h2 class="eyebrow">Ajouter un moyen</h2>
+    <form action="/gestion-privee/paiements/ajouter" method="post">
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" name="nom" required placeholder="Express Union">
+      <label for="icone">Icône</label>
+      <input type="text" id="icone" name="icone" placeholder="💳">
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
