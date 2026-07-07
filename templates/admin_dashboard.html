@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vue d'ensemble</title>
+{% include "_head_fonts.html" %}
+</head>
+<body>
+<div class="wrap">
+  {% include "_admin_nav.html" %}
+
+  <div class="card">
+    <span class="beacon"><span class="dot"></span> Plateforme en ligne</span>
+    <h1>Vue d'ensemble</h1>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="value">{{ total_commandes }}</div><div class="label">Commandes totales</div></div>
+      <div class="stat-box"><div class="value">{{ payees }}</div><div class="label">Payées</div></div>
+      <div class="stat-box"><div class="value">{{ en_attente }}</div><div class="label">En attente</div></div>
+      <div class="stat-box"><div class="value">{{ livrees }}</div><div class="label">Livrées</div></div>
+      <div class="stat-box"><div class="value">{{ revenus | int }} F</div><div class="label">Revenus totaux</div></div>
+      <div class="stat-box"><div class="value">{{ taux_conversion }}%</div><div class="label">Taux de conversion</div></div>
+      <div class="stat-box"><div class="value">{{ prix_actuel | int }} F</div><div class="label">Prix actuel</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
