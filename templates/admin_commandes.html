@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commandes</title>
+{% include "_head_fonts.html" %}
+</head>
+<body>
+<div class="wrap">
+  {% include "_admin_nav.html" %}
+
+  <div class="card">
+    <h1>Commandes</h1>
+
+    <div style="margin-bottom:16px; display:flex; gap:8px; flex-wrap:wrap;">
+      <a class="btn btn-ghost btn-sm" href="/gestion-privee/commandes">Toutes</a>
+      <a class="btn btn-ghost btn-sm" href="/gestion-privee/commandes?statut=en_attente_paiement">En attente</a>
+      <a class="btn btn-ghost btn-sm" href="/gestion-privee/commandes?statut=payé">Payées</a>
+      <a class="btn btn-ghost btn-sm" href="/gestion-privee/commandes?statut=livré">Livrées</a>
+    </div>
+
+    {% if commandes %}
+    <table>
+      <tr><th>WhatsApp</th><th>Statut</th><th>Montant</th><th>Date</th><th></th></tr>
+      {% for c in commandes %}
+      <tr>
+        <td>{{ c.client_whatsapp }}</td>
+        <td>
+          {% if c.statut == "en_attente_paiement" %}<span class="badge badge-attente">En attente</span>
+          {% elif c.statut == "payé" %}<span class="badge badge-paye">Payé</span>
+          {% elif c.statut == "formulaire_rempli" %}<span class="badge badge-rempli">Formulaire rempli</span>
+          {% elif c.statut == "livré" %}<span class="badge badge-livre">Livré</span>
+          {% endif %}
+        </td>
+        <td>{{ c.montant | int }} F</td>
+        <td>{{ c.created_at.strftime("%d/%m/%Y %H:%M") }}</td>
+        <td>
+          {% if c.statut == "livré" %}
+          <form action="/gestion-privee/commandes/{{ c.id }}/relivrer" method="post" style="margin:0;">
+            <button type="submit" class="btn-sm btn-ghost">Relivrer</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <div class="empty-state">Aucune commande pour l'instant. Partagez votre lien pour commencer à recevoir des clients.</div>
+    {% endif %}
+  </div>
+</div>
+</body>
+</html>
