@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Votre bot est prêt</title>
+{% include "_head_fonts.html" %}
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <span class="beacon"><span class="dot"></span> Bot généré</span>
+    <h1>Prêt à diffuser</h1>
+    <p class="lede">Choisissez comment récupérer votre bot :</p>
+
+    <a class="btn btn-live btn-block" href="/livraison/{{ token }}/telecharger">Télécharger le panneau de configuration (HTML)</a>
+    <a class="btn btn-ghost btn-block" href="{{ deploy_link }}" target="_blank">Copier le lien d'activation</a>
+
+    <p class="lede" style="font-size:13px; margin-top:20px;">
+      Le fichier HTML garde vos identifiants prêts à copier. Le lien d'activation, lui, met réellement votre bot en ligne — c'est cette étape qui déclenche la diffusion continue, même téléphone éteint.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2 class="eyebrow">Dernière étape, ne l'oubliez pas</h2>
+    <p class="lede">Sur Telegram, ajoutez votre bot comme <strong>administrateur</strong> de votre canal (et de votre groupe de discussion si vous voulez les réponses automatiques). Sans cela, Telegram ne le laissera pas publier.</p>
+  </div>
+</div>
+</body>
+</html>
