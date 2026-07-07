@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configurez votre bot</title>
+{% include "_head_fonts.html" %}
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <span class="beacon"><span class="dot"></span> Paiement confirmé</span>
+    <h1>Renseignez votre canal</h1>
+    <p class="lede">Ces informations restent privées et ne servent qu'à générer votre bot.</p>
+
+    <form action="/formulaire/{{ token }}" method="post">
+      <label for="bot_token">Token de votre bot Telegram
+        <span class="hint">Ouvrez Telegram, cherchez <b>@BotFather</b>, envoyez <code>/newbot</code>, suivez les instructions, puis copiez le token qu'il vous donne.</span>
+      </label>
+      <input type="text" id="bot_token" name="bot_token" required placeholder="123456789:AAExempleDeTokenXYZ" class="mono">
+
+      <label for="owner_id">Votre identifiant Telegram
+        <span class="hint">Cherchez <b>@userinfobot</b> sur Telegram, envoyez-lui n'importe quel message : il vous répond avec votre ID.</span>
+      </label>
+      <input type="text" id="owner_id" name="owner_id" required placeholder="987654321" class="mono">
+
+      <label for="channel_id">Identifiant de votre canal
+        <span class="hint">Le nom public (@mon_canal) ou l'identifiant numérique de votre canal.</span>
+      </label>
+      <input type="text" id="channel_id" name="channel_id" required placeholder="@mon_canal" class="mono">
+
+      <label for="group_id">Groupe de discussion lié
+        <span class="hint">Facultatif — nécessaire seulement si vous voulez les réponses automatiques aux commentaires.</span>
+      </label>
+      <input type="text" id="group_id" name="group_id" placeholder="-1009876543210" class="mono">
+
+      <label for="post_hour_utc">Heure de publication quotidienne
+        <span class="hint">En heure UTC, de 0 à 23.</span>
+      </label>
+      <input type="number" id="post_hour_utc" name="post_hour_utc" min="0" max="23" value="9">
+
+      <label for="anthropic_api_key">Clé API pour les réponses intelligentes (optionnel)
+        <span class="hint">Laissez vide pour rester sur les réponses par mots-clés, gratuites.</span>
+      </label>
+      <input type="text" id="anthropic_api_key" name="anthropic_api_key" placeholder="Laisser vide si non utilisé" class="mono">
+
+      <button type="submit" class="btn-block">Générer mon bot</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
